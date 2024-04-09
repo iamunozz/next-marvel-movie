@@ -21,6 +21,7 @@ curl_close($ch);
 <main>
     <section>
         <img src="<?= $response['poster_url']; ?>" alt="Poster de <?= $response['title']; ?>" width="300">
+        <img src="<?= $response['following_production']['poster_url']; ?>" alt="Poster de <?= $response['following_production']['title']; ?>" width="300">
     </section>
     <hgroup>
         <h2><?= $response['title']; ?> se estrena en <?= $response['days_until']; ?> días</h2>
@@ -46,16 +47,67 @@ curl_close($ch);
     }
 
     section {
+        position: relative;
         display: flex;
         justify-content: center;
         text-align: center;
         flex-direction: column;
+        transition: all 0.3s ease;
     }
+
+    section img:first-child {
+        /* box-shadow: 0 60px 60px -60px rgba(0, 30, 255, 0.5); */
+        border-radius: 16px;
+        object-fit: cover;
+        /* width: 100%; */
+    }
+
+    section img:last-child {
+        position: absolute;
+        width: 200px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        transform: translateY(25%);
+        transition: .3s ease;
+        opacity: 0;
+    }
+
+    section:hover {
+        transform:
+            perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+    }
+
+    section::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    section:hover::before {
+        opacity: 1;
+    }
+
+    section:hover img:last-child {
+        opacity: 1;
+        transform: translateY(10%);
+    }
+
+    /* section:hover  {
+        transform: translateY(0);
+        opacity: 1;
+    } */
 
     hgroup {
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
+        padding-top: 4%;
     }
 </style>
