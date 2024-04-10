@@ -21,7 +21,7 @@ curl_close($ch);
 <main>
     <section>
         <img src="<?= $response['poster_url']; ?>" alt="Poster de <?= $response['title']; ?>" width="300">
-        <img src="<?= $response['following_production']['poster_url']; ?>" alt="Poster de <?= $response['following_production']['title']; ?>" width="300">
+        <img src="images/deadpool-wolverine-poster.webp" alt="Poster de <?= $response['following_production']['title']; ?>" width="300">
     </section>
     <hgroup>
         <h2><?= $response['title']; ?> se estrena en <?= $response['days_until']; ?> días</h2>
@@ -56,7 +56,7 @@ curl_close($ch);
     }
 
     section img:first-child {
-        /* box-shadow: 0 60px 60px -60px rgba(0, 30, 255, 0.5); */
+        box-shadow: 0 60px 60px -60px rgba(0, 30, 255, 0.5);
         border-radius: 16px;
         object-fit: cover;
         /* width: 100%; */
@@ -64,7 +64,7 @@ curl_close($ch);
 
     section img:last-child {
         position: absolute;
-        width: 200px;
+        width: 500px;
         bottom: 0;
         left: 0;
         right: 0;
